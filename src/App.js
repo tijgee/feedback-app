@@ -1,31 +1,17 @@
+import { useState } from "react";
+import Header from "./components/Header";
+import FeedbackList from "./components/FeedbackList";
+import FeedbackData from "./data/FeedbackData";
+
 function App() {
-  const title = "Blog Post";
-  const body = "This is my blog post";
-  const comments = [
-    { id: 1, text: "Comment one" },
-    { id: 2, text: "Comment two" },
-    { id: 3, text: "Comment three" },
-  ];
-
-  const loading = false;
-  const showComments = true;
-  if (loading) return true;
-
-  const commentblock =  <div className="comments">
-  <h3>Comments ({comments.length})</h3>
-  <ul>
-    {comments.map((comment, index) => (
-      <li key={index}>{comment.text}</li>
-    ))}
-  </ul>
-</div>
-
+  const [feedback, setFeeback] = useState(FeedbackData);
   return (
-    <div className="container">
-      <h1>{title}</h1>
-      <p>{body}</p>
-      {showComments && commentblock}
-    </div>
+    <>
+      <Header text={"Feedback UI"} bgColor="red" textcolor="blue" />
+      <div className="Container">
+        <FeedbackList feedback = {feedback}/>
+      </div>
+    </>
   );
 }
 
